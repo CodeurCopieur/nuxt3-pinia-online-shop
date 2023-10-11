@@ -1,5 +1,15 @@
 <script setup>
+  /* imports */
+  import { storeToRefs } from 'pinia'
+  import { useCartStore } from '../stores/cart';
+
+  const cartStore = useCartStore();
+
+  const { loading, products } = storeToRefs(cartStore);
+
   const grid = ref(true);
+
+
 </script>
 
 <template>
@@ -22,9 +32,9 @@
     </div>
     <div class="gap-4"
       :class="{'grid md:grid-cols-3 lg:grid-cols-4': grid}">
-      <div v-for="n in 12" :key="n"
+      <div v-for="product in products" :key="product.id"
         class="relative w-full flex"
-        :class="{'flex-row items-center border border-grey-dark transition-shadow hover:shadow-lg': !grid, 'flex-col': grid, 'mb-4': n !== 12 && !grid}">
+        :class="{'flex-row items-center border border-grey-dark transition-shadow hover:shadow-lg': !grid, 'flex-col': grid, 'mb-4': product !== products.length-1 && !grid}">
           <div class="relative flex items-center justify-center rounded"
             :class="{'w-full sm:w-2/5 lg:w-3/11': !grid}">
             <div class="h-68 w-full bg-cover bg-center bg-no-repeat" style="background-image:url(https://elyssi.redpixelthemes.com/assets/img/unlicensed/sunglass-1.png)"></div>
