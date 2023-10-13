@@ -9,7 +9,6 @@
 
   const grid = ref(true);
 
-
 </script>
 
 <template>
