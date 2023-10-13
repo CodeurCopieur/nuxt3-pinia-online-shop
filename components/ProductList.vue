@@ -35,7 +35,7 @@
       <div v-for="product in products" :key="product.id"
         class="relative w-full flex"
         :class="{'flex-row items-center border border-grey-dark transition-shadow hover:shadow-lg': !grid, 'flex-col': grid, 'mb-4': product !== products.length-1 && !grid}">
-          <div class="relative flex items-center justify-center rounded"
+          <!-- <div class="relative flex items-center justify-center rounded"
             :class="{'w-full sm:w-2/5 lg:w-3/11': !grid}">
             <div class="h-68 w-full bg-cover bg-center bg-no-repeat w-full {bg-cover bg-center}" 
             :style="`background-image:url(${product.thumbnail})`"></div>
@@ -87,7 +87,8 @@
               45
             </p>
           </div>
-          </div>
+          </div> -->
+          <Product :product="product" :grid="grid" />
       </div>
     </div>
   </div>
