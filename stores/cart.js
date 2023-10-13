@@ -9,7 +9,31 @@ export const useCartStore = defineStore('cart', {
   }),
   getters: {
     formattedCart() {
+      return Object.keys(this.cartContent).map(productId => {
+        const product = this.cartContent[productId];
+  
+        const matchedProduct = this.products.find(p => p.id === parseInt(product.productId, 10));
 
+  
+        if (matchedProduct) {
+          const { id, thumbnail, title, price } = matchedProduct;
+          const { quantity } = product;
+          
+          return {
+            id,
+            thumbnail,
+            title,
+            price,
+            quantity,
+            cost: quantity * price
+          };
+
+
+        } else {
+          // Gérer le cas où le produit n'a pas été trouvé
+          return null;
+        }
+      }).filter(product => product !== null); // Filtrer les produits null
     }
   },
   actions: {
@@ -43,7 +67,7 @@ export const useCartStore = defineStore('cart', {
       }
     },
     add(productId) {
-
+      
       productId = productId.toString();
       if(this.cartContent.hasOwnProperty(productId)) {
         this.cartContent[productId] = {
