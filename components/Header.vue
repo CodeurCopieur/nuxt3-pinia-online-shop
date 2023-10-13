@@ -5,7 +5,7 @@
   /* imports */
   import { useCartStore } from '../stores/cart';
   const cartStore = useCartStore();
-  
+
 </script>
 <template>
   <header class="shadow-sm bg-white">
@@ -26,7 +26,7 @@
           </NuxtLink>
         </li>
         <li class="cursor-pointer btn">
-          <i v-if="theme === 'light'" 
+          <i v-if="cartStore.theme === 'light'" 
             class="fa-solid fa-sun"></i>
           <i v-else class="fa-solid fa-moon"></i>
           <span class="ml-2">Toogle theme</span>
