@@ -43,15 +43,14 @@ export const useCartStore = defineStore('cart', {
       }
     },
     add(productId) {
+
       productId = productId.toString();
-      console.log(productId);
       if(this.cartContent.hasOwnProperty(productId)) {
         this.cartContent[productId] = {
           productId,
           quantity: this.cartContent[productId].quantity + 1
         }
-      } 
-      else {
+      } else {
         this.cartContent[productId] = {
           productId,
           quantity: 1
