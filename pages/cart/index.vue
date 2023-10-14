@@ -28,7 +28,8 @@
         <div>
           <div class="items"
             v-for="item in cartStore.formattedCart" :key="item.id">
-            <pre>{{ item }}</pre> <!-- Afficher le contenu de l'objet item -->
+            <!-- <pre>{{ item }}</pre>  -->
+            <!-- Afficher le contenu de l'objet item -->
             <div 
 
               class="item">
@@ -52,13 +53,18 @@
                 </div>
 
                 <!-- quantité -->
-                <div class="w-full border-b-0 border-grey-dark pb-0 text-center sm:w-1/5 xl:w-1/4">
+                <div class="w-full pb-0 text-center sm:w-1/5 xl:w-1/4">
                   <div class="mx-auto mr-8 xl:mr-4">
                     <div class="flex justify-center">
-                      <input type="number" id="quantity-form-desktop" class="form-quantity form-input w-16 rounded-r-none py-0 px-2 text-center" v-model="item.quantity" min="1">
-                            <div class="flex flex-col">
-                              <span class="flex-1 cursor-pointer rounded-tr border border-l-0 border-grey-darker bg-white px-1" @click="productQuantity++"><i class="bx bxs-up-arrow pointer-events-none text-xs text-primary"></i></span>
-                              <span class="flex-1 cursor-pointer rounded-br border border-t-0 border-l-0 border-grey-darker bg-white px-1" @click="productQuantity> 1 ? productQuantity-- : productQuanity=1"><i class="bx bxs-down-arrow pointer-events-none text-xs text-primary"></i></span>
+                      
+                            <div class="flex">
+                              <span class="flex-1 cursor-pointer bg-white px-1 hover:shadow-lg transition-all hover:text-emerald-500" @click="cartStore.add(item.id)">
+                                <i class="text-xl fa-solid fa-caret-up"></i>
+                              </span>
+                              <input type="number" :id="`quantity-form-${item.id}`" class="w-16 rounded py-0 px-2 text-center" v-model="item.quantity">
+                              <span class="flex-1 cursor-pointer g-white px-1 hover:shadow-lg transition-all hover:text-emerald-500" @click="cartStore.remove(item.id)">
+                                <i class="text-xl fa-solid fa-caret-down"></i>
+                              </span>
                             </div>
                           </div>
                         </div>
