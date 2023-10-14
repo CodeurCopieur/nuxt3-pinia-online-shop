@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: ['@unocss/nuxt','nuxt-icon', '@pinia/nuxt'],
+  ssr: false, // Désactivez le mode de rendu universel en développement
   unocss: {
     uno: true,
     preflight: true,
