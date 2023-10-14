@@ -9,13 +9,16 @@ export const useCartStore = defineStore('cart', {
   }),
   getters: {
     formattedCart() {
+      // crée un tableau contenant les clés (identifiants de produit) de l'objet cartContent (qui représente le contenu du panier) et itère sur chaque clé (chaque produit dans le panier)
       return Object.keys(this.cartContent).map(productId => {
+        // obtenez l'objet produit à partir du panier en utilisant la clé
         const product = this.cartContent[productId];
-  
+        // recherche le produit correspondant dans la liste de tous les produits (this.products) 
         const matchedProduct = this.products.find(p => p.id === parseInt(product.productId, 10));
 
-  
+        // si matchedProduct n'est pas undefined
         if (matchedProduct) {
+          // extrait les propriétés pertinentes du produit
           const { id, thumbnail, title, price } = matchedProduct;
           const { quantity } = product;
           
@@ -27,7 +30,6 @@ export const useCartStore = defineStore('cart', {
             quantity,
             cost: quantity * price
           };
-
 
         } else {
           // Gérer le cas où le produit n'a pas été trouvé
@@ -70,7 +72,7 @@ export const useCartStore = defineStore('cart', {
       
       productId = productId.toString();
 
-      //vérifie si le produit que vous essayez d'ajouter existe déjà dans le panier en utilisant hasOwnProperty
+      // vérifie si le produit que vous essayez d'ajouter existe déjà dans le panier en utilisant hasOwnProperty
       if(this.cartContent.hasOwnProperty(productId)) {
 
         //Si le produit existe déjà
