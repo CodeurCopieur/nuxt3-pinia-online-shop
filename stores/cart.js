@@ -69,16 +69,42 @@ export const useCartStore = defineStore('cart', {
     add(productId) {
       
       productId = productId.toString();
+
+      //vérifie si le produit que vous essayez d'ajouter existe déjà dans le panier en utilisant hasOwnProperty
       if(this.cartContent.hasOwnProperty(productId)) {
+
+        //Si le produit existe déjà
         this.cartContent[productId] = {
           productId,
-          quantity: this.cartContent[productId].quantity + 1
+          quantity: this.cartContent[productId].quantity + 1 //incrémente la quantité du produit existant de 1
         }
       } else {
+        //Si le produit n'existe pas encore dans le panier
+        // nouvelle entrée dans le panier pour le produit en utilisant productId comme clé
+        // entrée contient l'identifiant du produit (productId) et définit la quantité à 1,
         this.cartContent[productId] = {
           productId,
           quantity: 1
         }
+      }
+    },
+    remove(productId){
+
+      //vérifie si le produit que vous essayez de supprimer existe dans le panier
+      if (!this.cartContent[productId]) { // si c'est faux
+        return; //la méthode se termine ici
+      }
+
+      //Si le produit existe dans le panier
+      this.cartContent[productId].quantity -= 1; // réduit la quantité de ce produit d'une unité
+
+      //si la quantité du produit est maintenant égale à zéro
+      //le produit ne devrait plus être dans le panier, car il a été complètement supprimé.
+      if (this.cartContent[productId].quantity === 0) {
+        delete this.cartContent[productId];
+        // Si la quantité du produit est devenue zéro
+        //supprime effectivement l'entrée du produit
+        //Le produit est ainsi retiré du panier.
       }
     }
   }
