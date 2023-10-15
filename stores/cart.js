@@ -108,6 +108,11 @@ export const useCartStore = defineStore('cart', {
         //supprime effectivement l'entrée du produit
         //Le produit est ainsi retiré du panier.
       }
+    },
+    removeFromCart(productId) {
+      if (this.cartContent[productId]) {
+        delete this.cartContent[productId];
+      }
     }
   }
 })
