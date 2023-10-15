@@ -35,10 +35,9 @@
               class="item">
               <div class="mb-0 flex-row items-center justify-between border-b border-grey-dark py-3 md:flex">
                 <!-- icones -->
-                <!-- <Icon 
-                  @click="removeFromCart()"
-                icon="lucide:trash-2" class="mr-6 cursor-pointer text-2xl text-grey-darkest sm:text-3xl" /> -->
-                <i class="mr-6 cursor-pointer text-base text-grey-darkest sm:text-3xl fa-solid fa-trash"></i>
+                <i 
+                  @click="cartStore.removeFromCart(item.id)"
+                  class="mr-6 cursor-pointer text-xl fa-solid fa-trash"></i>
 
                 <div class="flex w-1/2 flex-row items-center border-b-0 border-grey-dark pt-0 pb-0 text-left lg:w-3/5 xl:w-1/2">
                   <div class="relative mx-0 w-20 pr-0">
@@ -57,12 +56,12 @@
                   <div class="mx-auto mr-8 xl:mr-4">
                     <div class="flex justify-center">
                       
-                            <div class="flex">
-                              <span class="flex-1 cursor-pointer bg-white px-1 hover:shadow-lg transition-all hover:text-emerald-500" @click="cartStore.add(item.id)">
+                            <div class="flex flex-col items-center">
+                              <span class="flex cursor-pointer bg-white px-1 hover:shadow-lg transition-all hover:text-emerald-500" @click="cartStore.add(item.id)">
                                 <i class="text-xl fa-solid fa-caret-up"></i>
                               </span>
-                              <input type="number" :id="`quantity-form-${item.id}`" class="w-16 rounded py-0 px-2 text-center" v-model="item.quantity">
-                              <span class="flex-1 cursor-pointer g-white px-1 hover:shadow-lg transition-all hover:text-emerald-500" @click="cartStore.remove(item.id)">
+                              <input type="number" :id="`quantity-form-${item.id}`" class="w-16 rounded py-0 px-2 text-center outline-none" v-model="item.quantity">
+                              <span class="flex cursor-pointer bg-white px-1 hover:shadow-lg transition-all hover:text-emerald-500" @click="cartStore.remove(item.id)">
                                 <i class="text-xl fa-solid fa-caret-down"></i>
                               </span>
                             </div>
@@ -72,7 +71,7 @@
 
 
                 <!-- price -->
-                <div class="w-1/4 pr-10 pb-4 text-right lg:w-1/5 xl:w-1/4 xl:pr-10">
+                <div class="w-1/4 text-right lg:w-1/5 xl:w-1/4">
                   <span class="font-hk text-secondary">${{item.cost}}</span>
                 </div>
 
