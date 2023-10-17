@@ -36,6 +36,21 @@ export const useCartStore = defineStore('cart', {
           return null;
         }
       }).filter(product => product !== null); // Filtrer les produits null
+    },
+    total() {
+      return Object.keys(this.cartContent).reduce((acc, id) => {
+        // Convertissez id en nombre
+        const productId = parseInt(id, 10);
+        // Recherchez le produit correspondant en utilisant le produitId
+        const product = this.products.find(p => p.id === productId);
+
+        if (product) {
+          // Si le produit est trouvé, ajoutez son coût à l'accumulateur
+          return acc + product.price * this.cartContent[id].quantity;
+        }
+        // Sinon, ne faites rien avec cet id (retournez simplement l'accumulateur)
+        return acc + 0;
+      }, 0)
     }
   },
   actions: {
