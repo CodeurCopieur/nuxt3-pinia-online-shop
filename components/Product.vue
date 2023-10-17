@@ -27,12 +27,14 @@
       class="absolute inset-0 flex items-center justify-center bg-emerald-500 bg-opacity-85 py-28 opacity-0 transition-opacity hover:opacity-100">
       <button
       @click="cartStore.add(product.id)"
-        class="mr-3 flex items-center rounded-full bg-white px-3 py-3 transition-shadow hover:shadow-lg transition-all hover:text-white hover:bg-emerald-500">
+      :class="cartStore.getTheme === 'light' ? 'bg-white text-black' : 'bg-black text-white'"
+        class="mr-3 flex items-center rounded-full  px-3 py-3 transition-shadow hover:shadow-lg transition-all hover:text-white hover:bg-emerald-500">
         <i class="fa-solid fa-cart-shopping"></i>
       </button>
       <NuxtLink
         :to="{ path: `/product/${product.id}` }"
-        class="flex items-center rounded-full bg-white px-3 py-3 transition-shadow hover:shadow-lg transition-all hover:text-white hover:bg-emerald-500">
+        :class="cartStore.getTheme === 'light' ? 'bg-white text-black' : 'bg-black text-white'"
+        class="flex items-center rounded-full px-3 py-3 transition-shadow hover:shadow-lg transition-all hover:text-white hover:bg-emerald-500">
         <i class="fa-solid fa-magnifying-glass"></i>
       </NuxtLink>
     </div>

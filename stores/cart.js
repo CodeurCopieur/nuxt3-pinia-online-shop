@@ -56,6 +56,9 @@ export const useCartStore = defineStore('cart', {
       return Object.keys(this.cartContent).reduce((acc, id) => {
         return acc + this.cartContent[id].quantity;
       }, 0)
+    },
+    getTheme() {
+      return this.theme
     }
   },
   actions: {
@@ -133,6 +136,9 @@ export const useCartStore = defineStore('cart', {
       if (this.cartContent[productId]) {
         delete this.cartContent[productId];
       }
+    },
+    toggleTheme() {
+      this.theme = this.theme === 'light' ? 'dark' : 'light'
     }
   }
 })

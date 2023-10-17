@@ -9,7 +9,8 @@
   });
 </script>
 <template>
-  <div id="app">
+  <div id="app"
+    :class="cartStore.getTheme === 'light' ? 'bg-white text-black' : 'bg-black text-white'">
     <NuxtLayout name="default">
       <nuxtPage />
     </NuxtLayout>

@@ -9,14 +9,14 @@
 <template>
      <div class="mt-16">
 
-<div v-if="Object.keys(cartStore.cartContent).length === 0" class="flex items-center flex-col">
-  <h4 class="text-gray-600 text-2xl font-medium mb-6">Le panier est vide ...</h4>
+<div v-if="Object.keys(cartStore.cartContent).length === 0" class="flex items-center flex-col min-h-screen">
+  <h4 class="text-2xl font-medium mb-6">Le panier est vide ...</h4>
   <router-link to="/" class="bg-emerald-600 hover:bg-emerald-500 focus:outline-none focus:ring focus:ring-emerald-300 active:bg-emerald-600 px-5 py-2 text-sm leading-5 rounded-full font-semibold text-white no-underline">Back to Home</router-link>
 </div>
 <div v-else>
   <div class="flex flex-col-reverse justify-between pb-16 sm:pb-20 lg:flex-row lg:pb-24">
     <div class="lg:w-3/5">
-        <h3 class="text-gray-600 text-2xl font-bold">Panier</h3>
+        <h3 class="text-2xl font-bold">Panier</h3>
         <div>
           <div class="items"
             v-for="item in cartStore.formattedCart" :key="item.id">
