@@ -51,6 +51,11 @@ export const useCartStore = defineStore('cart', {
         // Sinon, ne faites rien avec cet id (retournez simplement l'accumulateur)
         return acc + 0;
       }, 0)
+    },
+    productsTotal() {
+      return Object.keys(this.cartContent).reduce((acc, id) => {
+        return acc + this.cartContent[id].quantity;
+      }, 0)
     }
   },
   actions: {

@@ -20,7 +20,7 @@
         <li class="relative">
           <div 
             v-if="Object.keys(cartStore.cartContent).length != 0"
-            class="absolute bg-emerald-600 w-6 h-6 flex align-center justify-center items-center text-xs font-bold text-white" style="clip-path: circle(50%); top: -15px;right: 10px;">{{ Object.keys(cartStore.cartContent).length }}</div>
+            class="absolute bg-emerald-600 w-6 h-6 flex align-center justify-center items-center text-xs font-bold text-white" style="clip-path: circle(50%); top: -15px;right: 10px;">{{ cartStore.productsTotal }}</div>
           <NuxtLink to="/cart">
             <i class="fa-solid fa-cart-shopping"></i>
           </NuxtLink>
