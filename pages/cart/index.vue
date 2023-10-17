@@ -4,14 +4,6 @@
   import { useCartStore } from '../stores/cart';
 
   const cartStore = useCartStore();
-
-  const removeFromCart = () => {
-
-  }
-
-  const orderTotal = () => {
-    return 'lol'
-  };
 </script>
 
 <template>
@@ -60,7 +52,7 @@
                               <span class="flex cursor-pointer bg-white px-1 hover:shadow-lg transition-all hover:text-emerald-500" @click="cartStore.add(item.id)">
                                 <i class="text-xl fa-solid fa-caret-up"></i>
                               </span>
-                              <input type="number" :id="`quantity-form-${item.id}`" class="w-16 rounded py-0 px-2 text-center outline-none" v-model="item.quantity">
+                              <span>{{ item.quantity }}</span>
                               <span class="flex cursor-pointer bg-white px-1 hover:shadow-lg transition-all hover:text-emerald-500" @click="cartStore.remove(item.id)">
                                 <i class="text-xl fa-solid fa-caret-down"></i>
                               </span>
@@ -88,7 +80,7 @@
 
         <div class="flex justify-between pt-3">
           <span>Total</span>
-          <span>Grand Total: US$ {{ orderTotal() }}</span>
+          <span>Grand Total: US$ {{ cartStore.total }}</span>
         </div>
       </div>
     </div>
